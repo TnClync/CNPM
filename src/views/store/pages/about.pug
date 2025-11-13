@@ -1,0 +1,107 @@
+extends ../layout
+
+block layout-styles
+    style.
+        .card {
+            transition: all .5s;
+        }
+
+        .card:hover {
+            transform: scale(1.075);
+            box-shadow: var(--bs-box-shadow);
+            z-index: 999;
+        }
+
+block layout-content
+    -
+        const team = [
+            {
+                name: "Nguyễn Quang Trường",
+                github: "nguyenquangtruong08112005",
+                role: "Growth Maestro\n(Project Manager)",
+                quote: "it work why?"
+            }, {
+                name: "Trần Thái Bảo",
+                github: "tuibene",
+                role: "Digital Growth Consultant\n(Consultant)",
+                quote: "Git is easy — until you actually use it."
+            }, {
+                name: "Phan Anh Kiệt",
+                github: "Im-Karl",
+                role: "Tech Whisperer\n(Developer)",
+                quote: "TailwindCSS isn't CSS, it's a lifestyle."
+            }, {
+                name: "Nguyễn Phúc Toàn",
+                github: "ngphuctoan",
+                role: "Code Gardener\n(Developer)",
+                quote: "I use Arch btw."
+            }
+        ];
+
+    //- Introduction
+    section.py-5.bg-white
+        .container.text-center
+            h1.fw-bold
+                | Coffee Shop (/pages/about.pug) 🌸
+            h2.fw-semibold
+                | Where your smartphone blooms
+            
+            p.lead.text-muted.mt-4.mb-0
+                | At Smartphone Garden, we believe your phone is more than just a gadget — it's your daily companion. From top-tier smartphones to essential accessories, we're here to help you grow your digital lifestyle effortlessly.
+
+    //- Mission, Vision, Core Values
+    section.py-5.bg-light
+        .container
+            .row.text-center.g-5.row-cols-1.row-cols-lg-3
+                .col
+                    h3.h4.fw-semibold.mb-3 🎯 Mission
+                    p.text-muted
+                        | Providing quality smartphone products, dedicated services and splendid shopping experiences, helping customers access the modern mobile world in a friendly and smart way.
+                
+                .col
+                    h3.h4.fw-semibold.mb-3 👁️‍🗨️ Vision
+                    p.text-muted
+                        | Become the leading friendly smartphone ecosystem in 🇻🇳 
+                        span.text-danger Vietnam 
+                        | &mdash; where everyone can find devices that suit their needs and lifestyle.
+                
+                .col
+                    h3.h4.fw-semibold.mb-3 💡 Core values
+                    ul.list-unstyled.text-muted
+                        li.mb-1
+                            span.fw-bold Dedication: 
+                            | Always put customers at the centre
+                        li.mb-1
+                            span.fw-bold Innovation: 
+                            | Update the latest tech every day
+                        li.mb-1
+                            span.fw-bold Honesty: 
+                            | Transparency in price and quality
+                        li.mb-1
+                            span.fw-bold Supportive: 
+                            | Helps you in every purchase
+                        li.mb-1
+                            span.fw-bold Friendly: 
+                            | Every visit is a pleasant experience
+
+    //- Team
+    section.p-5.bg-white
+        .container.px-5
+            h3.h3.text-center.fw-semibold.mb-5 👥 Our teams!
+
+            .row.row-cols-1.row-cols-md-2.row-cols-xl-4.g-2.px-5
+                each member in team
+                    .col
+                        a.card.h-100.text-decoration-none(
+                            href=`https://github.com/${member.github}`
+                        )
+                            img.card-img-top(
+                                src=`https://avatars.githubusercontent.com/${member.github}`
+                                alt=member.name
+                            )
+
+                            .card-body.text-center
+                                h4.h6.fw-bold.mb-1= member.name
+                                span.text-muted(style="white-space: pre-line")= member.role
+
+                                p.fst-italic.card-text.my-4 "#{member.quote}"
